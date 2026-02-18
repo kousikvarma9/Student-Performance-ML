@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Predictor</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 8px;
+            
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .pass {
+            color: green;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .fail {
+            color: red;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>Student Performance Prediction</h2>
+
+<form method="POST" action="/predict">
+
+    <input type="number" name="age"
+       placeholder="Age (15–22)"
+       min="15" max="22" required><br>
+
+    <input type="number" name="traveltime"
+        placeholder="Travel Time (1–4)"
+        min="1" max="4" required><br>
+
+    <input type="number" name="studytime"
+        placeholder="Study Time (1–4)"
+        min="1" max="4" required><br>
+
+    <input type="number" name="failures"
+        placeholder="Past Failures (0–3)"
+        min="0" max="3" required><br>
+
+    <input type="number" name="freetime"
+        placeholder="Free Time (1–5)"
+        min="1" max="5" required><br>
+
+    <input type="number" name="goout"
+        placeholder="Going Out (1–5)"
+        min="1" max="5" required><br>
+
+    <input type="number" name="Dalc"
+        placeholder="Weekday Alcohol (1–5)"
+        min="1" max="5" required><br>
+
+    <input type="number" name="Walc"
+        placeholder="Weekend Alcohol (1–5)"
+        min="1" max="5" required><br>
+
+    <input type="number" name="health"
+        placeholder="Health (1–5)"
+        min="1" max="5" required><br>
+
+    <input type="number" name="absences"
+        placeholder="Absences (0–100)"
+        min="0" max="100" required><br><br>
+
+    <button type="submit">Predict</button>
+
+</form>
+
+
+{% if prediction %}
+<div class="result">
+    <p><strong>Predicted Grade:</strong> {{ prediction.marks }}</p>
+
+    <p>
+        <strong>Status:</strong>
+        <span class="{% if prediction.pass == 'Pass' %}pass{% else %}fail{% endif %}">
+            {{ prediction.pass }}
+        </span>
+    </p>
+</div>
+{% endif %}
+
+</body>
+</html>
