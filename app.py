@@ -53,11 +53,12 @@ def predict():
                               freetime, goout, Dalc, Walc, health, absences]])
 
         predicted_marks = regression_model.predict(features)[0]
-        predicted_pass = classification_model.predict(features)[0]
+        proba = classification_model.predict_proba(features)[0][1]
 
         result = {
-            "marks": round(float(predicted_marks), 2),
-            "pass": "Pass" if predicted_pass == 1 else "Fail"
+                    "marks": round(float(predicted_marks), 2),
+                    "pass": "Pass" if proba >= 0.5 else "Fail",
+                    "confidence": round(float(proba * 100), 2)
         }
 
         return render_template("index.html", prediction=result)
