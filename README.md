@@ -98,6 +98,14 @@ Student-Performance-ML/
 
 ----------
 
+✨ New Features:
+- Dark/Light theme toggle
+- ML confidence probability bar
+- Modern dropdown UI
+- Responsive design
+
+----------
+
 ## Author
 
 Kousik Varma Gattupalli
