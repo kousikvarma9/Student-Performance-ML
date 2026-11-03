@@ -8,7 +8,7 @@ The goal was to build a complete ML pipeline — from data preprocessing and mod
 
 ----------
 
-## What This Project Does
+## What This Project Does 
 
 - Predicts the final grade (Regression)
 - Predicts pass/fail outcome (Classification)
